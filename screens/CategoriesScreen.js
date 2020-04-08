@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Button, FlatList, Touchable, TouchableOpacity} from 'react-native';
 import { CATEGORIES } from '../data/dummy';
 
-const renderGridItem = (oneitem) => {
-    return <View style={styles.grid}><Text style={{color: 'green' }}>{oneitem.item.title}</Text></View>
-}
+
 
 const CategoriesScreen = (props) => {
     console.log(props)
+    const renderGridItem = (oneitem) => {
+        return (
+        <TouchableOpacity style={styles.grid} onPress={() => {props.navigation.navigate('CategoryMeals')}}>
+        <View ><Text style={{color: 'green' }}>{oneitem.item.title}</Text></View>
+        </TouchableOpacity>
+        ) 
+    }
     return (
        <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2}>
 
