@@ -1,14 +1,27 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList, Touchable, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Button, FlatList, Touchable, TouchableOpacity, Platform} from 'react-native';
 import { CATEGORIES } from '../data/dummy';
 
 
 
-const CategoriesScreen = (props) => {
-    console.log(props)
-    const renderGridItem = (oneitem) => {
+class CategoriesScreen extends Component {
+    static navigationOptions = {
+        title: 'Home',
+        headerStyle: {
+          backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#f26a16' : '#f4511e',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: { 
+        },
+    }
+
+    
+    render () {
+        let renderGridItem = (oneitem) => {
         return (
-        <TouchableOpacity style={styles.grid} onPress={() => {props.navigation.navigate('CategoryMeals')}}>
+        <TouchableOpacity style={styles.grid} onPress={() => {this.props.navigation.navigate({routeName:'CategoryMeals', params: {
+            categoryId: oneitem.item.id
+        }})}}>
         <View ><Text style={{color: 'green' }}>{oneitem.item.title}</Text></View>
         </TouchableOpacity>
         ) 
@@ -18,7 +31,10 @@ const CategoriesScreen = (props) => {
 
        </FlatList>
     )
+    }
 }
+
+
 
 const styles = StyleSheet.create({
     screen: {
