@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button} from 'react-native';
 import { CATEGORIES, MEALS } from '../data/dummy';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import MealItem from '../components/MealItem';
 
 var topic = ''
 var color = ''
@@ -23,12 +24,19 @@ const CategoryMeals = (props) => {
 
     
     const renderGrid = items => {
-        return (<View><Text>{items.item.title}</Text></View>)
+        return <MealItem 
+        title={items.item.title} 
+        duration={items.item.duration} 
+        onSelectedMeal={() => {}}
+        affordability={items.item.affordability}
+        complexity={items.item.complexity}
+        image={items.item.imageUrl}
+        ></MealItem>
     }
     return (
         
         <View style={styles.screen}>
-            <FlatList data={specmeal} keyExtractor={(item, index) => item.id}
+            <FlatList style={styles.list} data={specmeal} keyExtractor={(item, index) => item.id}
             renderItem={renderGrid}></FlatList>
             <Button title="Go meals" onPress={() => props.navigation.navigate('MealDetail')}></Button>
         </View>
@@ -82,6 +90,11 @@ const styles = StyleSheet.create({
         height: 100,
         fontFamily: 'open-sans-bold',
         fontSize: 20
+    },
+    list: {
+        width: '98%',
+        textAlign: 'center',
+
     }
 })
 
