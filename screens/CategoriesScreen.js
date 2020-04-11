@@ -6,15 +6,14 @@ import { CATEGORIES } from '../data/dummy';
 
 class CategoriesScreen extends Component {
     static navigationOptions = {
-        title: 'Home',
+        title: 'Categories',
         headerStyle: {
-          backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#f26a16' : '#f4511e',
+          backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#d303fc' : '#d303fc',
         },
         headerTintColor: 'white',
         headerTitleStyle: { 
         },
     }
-
     
     render () {
         let renderGridItem = (oneitem) => {
@@ -33,6 +32,7 @@ class CategoriesScreen extends Component {
     )
     }
 }
+
 
 
 

@@ -8,6 +8,17 @@ const Mealsnav = createStackNavigator({
     Categories:CategoriesScreen,
     CategoryMeals: CategoryMealsScreen,
     MealDetail: MealDetailScreen, 
-}, {headerLayoutPreset: 'center'})
+},{
+    defaultNavigationOptions : {
+        headerStyle: {
+            backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#d303fc' : '#d303fc',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: { 
+          },
+          headerTitleAlign: 'center'
+         
+    }
+})
 
 export default createAppContainer(Mealsnav);

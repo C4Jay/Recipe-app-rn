@@ -3,9 +3,12 @@ import { View, Text, StyleSheet, Button} from 'react-native';
 import { CATEGORIES } from '../data/dummy';
 
 const CategoryMeals = (props) => {
+
+   
     const id = props.navigation.getParam('categoryId')
     const category = CATEGORIES.find(cat => cat.id === id)
     return (
+        
         <View style={styles.screen}>
             <Text>CategoryMeals</Text>
             <Text>{category.title} </Text>
@@ -13,6 +16,16 @@ const CategoryMeals = (props) => {
         </View>
     )
 }
+
+CategoryMeals['navigationOptions'] = screenProps => ({
+    title: 'CategoryMeals',
+    headerStyle: {
+        backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#d303fc' : '#d303fc',
+      },
+      headerTintColor: 'white',
+      headerTitleStyle: { 
+      },
+})
 
 const styles = StyleSheet.create({
     screen: {
