@@ -19,7 +19,8 @@ class CategoriesScreen extends Component {
         let renderGridItem = (oneitem) => {
         return (
         <TouchableOpacity style={styles.grid} onPress={() => {this.props.navigation.navigate({routeName:'CategoryMeals', params: {
-            categoryId: oneitem.item.id
+            categoryId: oneitem.item.id,
+            categoryname: oneitem.item.title
         }})}}>
         <View ><Text style={{color: 'green' }}>{oneitem.item.title}</Text></View>
         </TouchableOpacity>
