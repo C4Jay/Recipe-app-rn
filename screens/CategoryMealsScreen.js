@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button} from 'react-native';
 import { CATEGORIES } from '../data/dummy';
 
 var topic = ''
+var color = ''
 
 const CategoryMeals = (props) => {
 
@@ -12,6 +13,7 @@ const CategoryMeals = (props) => {
 
     useEffect(() => {
         topic = props.navigation.getParam('categoryname')
+        color = props.navigation.getParam('categorycolor')
         
          
     })
@@ -33,7 +35,7 @@ CategoryMeals['navigationOptions'] = screenProps => ({
     headerStyle: {
         backgroundColor: /* '#f4511e' */ Platform.OS === 'android' ? '#d303fc' : '#d303fc',
       },
-      headerTintColor: 'white',
+      headerTintColor: color,
       headerTitleStyle: { 
       },
 })
