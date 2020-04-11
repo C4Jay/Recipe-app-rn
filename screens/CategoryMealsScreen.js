@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button} from 'react-native';
-import { CATEGORIES } from '../data/dummy';
+import { CATEGORIES, MEALS } from '../data/dummy';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 var topic = ''
 var color = ''
@@ -18,13 +19,17 @@ const CategoryMeals = (props) => {
          
     })
 
-    
+    const specmeal = MEALS.filter(meal => meal.categoryIds.indexOf(id) >= 0)
 
+    
+    const renderGrid = items => {
+        return (<View><Text>{items.item.title}</Text></View>)
+    }
     return (
         
         <View style={styles.screen}>
-            <Text>CategoryMeals</Text>
-            <Text>{category.title} </Text>
+            <FlatList data={specmeal} keyExtractor={(item, index) => item.id}
+            renderItem={renderGrid}></FlatList>
             <Button title="Go meals" onPress={() => props.navigation.navigate('MealDetail')}></Button>
         </View>
     )
@@ -43,8 +48,40 @@ CategoryMeals['navigationOptions'] = screenProps => ({
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center'
+    },
+    
+    grid: {
+        flex: 1,
+        margin: 15,/* 
+        textAlign: 'center', */
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 168,
+        borderRadius: 10,
+        overflow: 'hidden'
+
+    },
+    itemsgrid: {
+        flex: 1, 
+       
+        borderRadius: 10,
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: {width: 0, height: 2},
+        shadowRadius: 10,
+        elevation: 9,
+        padding: 10,
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
+    },
+    gridtext: {
+        flex: 1, 
+        width: 190,
+        maxWidth: '98%', 
+        height: 100,
+        fontFamily: 'open-sans-bold',
+        fontSize: 20
     }
 })
 
