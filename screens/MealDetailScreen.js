@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { MEALS } from '../data/dummy';
-
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import Custombutton from '../components/Helperbutton';
 var nameofmeal = ''
 
 const MealDetailScreen = (props) => {
@@ -29,6 +30,12 @@ MealDetailScreen['navigationOptions'] = screenProps => ({
       headerTintColor: 'green',
       headerTitleStyle: { 
       },
+      headerRight: () => {return ( <HeaderButtons HeaderButtonComponent={Custombutton}>
+          <Item 
+          title="Favorite" 
+          iconName="ios-star" 
+          onPress={() => {console.log("fav mark")}}></Item>
+      </HeaderButtons>)}
 })
 
 const styles = StyleSheet.create({

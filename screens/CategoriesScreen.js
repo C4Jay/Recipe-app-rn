@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, FlatList, Touchable, TouchableOpacity, Platform, TouchableNativeFeedback} from 'react-native';
 import { CATEGORIES } from '../data/dummy';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -36,9 +37,15 @@ class CategoriesScreen extends Component {
         ) 
     }
     return (
+        <View style={styles.screen}>
+            <View style={styles.fav}>
+               <Text style={styles.favtext}>Favorites   <Ionicons style={{padding: 10}} size={20} name="ios-star"></Ionicons> </Text>
+
+            </View>
        <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2}>
 
        </FlatList>
+       </View>
     )
     }
 }
@@ -60,7 +67,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 168,
         borderRadius: 10,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        elevation: 9,
 
     },
     itemsgrid: {
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.26,
         shadowOffset: {width: 0, height: 2},
         shadowRadius: 10,
-        elevation: 9,
+        
         padding: 10,
         justifyContent: 'flex-end',
         alignItems: 'flex-end'
@@ -81,6 +89,25 @@ const styles = StyleSheet.create({
         width: 190,
         maxWidth: '98%', 
         height: 100,
+        fontFamily: 'open-sans-bold',
+        fontSize: 20
+    },
+    fav: {
+        alignItems: 'center',
+        height: 40,
+        justifyContent: 'center',
+        backgroundColor: 'yellow',
+        marginVertical: 30,
+        marginHorizontal: 30,
+        borderRadius: 10,
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: {width: 0, height: 2},
+        shadowRadius: 10,
+        elevation: 19
+    },
+    favtext: {
+        
         fontFamily: 'open-sans-bold',
         fontSize: 20
     }

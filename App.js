@@ -5,6 +5,9 @@ import { AppLoading } from 'expo';
 
 import Mealsnav from './nav/Mealsnav';
 
+import AppsStack from './nav/Mealsnav';
+import Customnav from './nav/Switch';
+import Tab from './nav/Switch';
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -22,7 +25,11 @@ export default function App() {
     )
   }
   return (
+    
     <Mealsnav></Mealsnav>
+  
+  
+ 
   );
 }
 
