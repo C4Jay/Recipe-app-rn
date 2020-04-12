@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     item: {
         height: 200,
         width: '100%',
-        backgroundColor: 'grey',
+        backgroundColor: '#e6c5b5',
         borderRadius: 10,
         marginTop: 8,
         overflow: 'hidden',

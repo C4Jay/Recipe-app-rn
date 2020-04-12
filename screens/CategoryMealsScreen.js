@@ -27,11 +27,15 @@ const CategoryMeals = (props) => {
         return <MealItem 
         title={items.item.title} 
         duration={items.item.duration} 
-        onSelectedMeal={() => {}}
+        onSelectedMeal={() => {props.navigation.navigate({routeName: 'MealDetail', params: {
+            specmealId: items.item.id,
+            itemtitle: items.item.title
+        }})}}
         affordability={items.item.affordability}
         complexity={items.item.complexity}
         image={items.item.imageUrl}
         ></MealItem>
+       
     }
     return (
         
