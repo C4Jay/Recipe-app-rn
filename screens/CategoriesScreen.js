@@ -38,10 +38,11 @@ class CategoriesScreen extends Component {
     }
     return (
         <View style={styles.screen}>
+        <Touchcomp onPress={() => {this.props.navigation.navigate({routeName:'FavoritesScreen'})}}>
             <View style={styles.fav}>
                <Text style={styles.favtext}>Favorites   <Ionicons style={{padding: 10}} size={20} name="ios-star"></Ionicons> </Text>
-
             </View>
+        </Touchcomp>
        <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2}>
 
        </FlatList>

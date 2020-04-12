@@ -8,12 +8,21 @@ import Mealsnav from './nav/Mealsnav';
 import AppsStack from './nav/Mealsnav';
 import Customnav from './nav/Switch';
 import Tab from './nav/Switch';
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider, connect } from 'react-redux';
+import reducer from './store/reducer'
+
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Regular.ttf')
   })
 }
+
+const store = createStore(reducer)
+
+
 export default function App() {
 
   const [fontLoaded, setfontLoaded] = useState(false)
@@ -25,8 +34,9 @@ export default function App() {
     )
   }
   return (
-    
+    <Provider store={store}>
     <Mealsnav></Mealsnav>
+    </Provider>
   
   
  
