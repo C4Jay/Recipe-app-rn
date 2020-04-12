@@ -1,5 +1,6 @@
 const initlist = {
-    initfavs: [{}]
+    initfavs: [{}],
+    favoritelist: ["cheese-burger","hamburger"]
 }
 
 const reducer = (state=initlist, action) => {
