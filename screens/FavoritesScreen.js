@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import MealItem from '../components/MealItem';
 
@@ -13,9 +13,11 @@ const FavoritesScreen = (props) => {
 
       
  
-
+            <ScrollView>
+                <View style={styles.grid}>
             {props.favorites.map(single => {
                 return ( <MealItem
+                style={styles.item}
                 title={single.title} 
                 duration={single.duration} 
               
@@ -25,6 +27,8 @@ const FavoritesScreen = (props) => {
                 ></MealItem>
                 )
             })}
+            </View>
+            </ScrollView>
         </View>
     )
 }
@@ -34,7 +38,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    item: {
+        marginHorizontal: 8
+    },
+    grid: {
+        marginHorizontal: 8
     }
+  
 })
 
 
