@@ -1,6 +1,6 @@
 const initlist = {
     initfavs: [{}],
-    favoritelist: ["cheese-burger","hamburger"],
+    favoritelist: [/* "cheese-burger","hamburger" */],
     favorites: ''
 }
 

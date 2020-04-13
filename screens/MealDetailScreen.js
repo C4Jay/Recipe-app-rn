@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 
 import { Button } from 'react-native-paper';
 
+import MealItem from '../components/MealItem';
+
 var nameofmeal = ''
 
 const MealDetailScreen = (props) => {
@@ -16,19 +18,32 @@ const MealDetailScreen = (props) => {
     const name = props.navigation.getParam('itemtitle')
     nameofmeal = props.navigation.getParam('itemtitle')
     const specmeal = MEALS.find(meal => meal.id === id)
+    const meal = props.navigation.getParam('wholeitem')
 
-    const setHandler = (name) => {
+    
+
+    const setHandler = (meal) => {
         /* props.onFavSet(name) */
-        props.onMealSet(name)
+        props.onMealSet(meal)
     }
     
     return (
         <View style={styles.screen}>
             <Text>MealDetail Screen</Text>
-            <Text>{id}</Text>
+            {/* <Text>{id}</Text>
             <Text>{name}</Text>
-            <Text>{specmeal.title}</Text>
-            <Button onPress={() => setHandler(name)}>click</Button>
+            <Text>{specmeal.title}</Text> */}
+       <View>
+       <MealItem
+        title={meal.title} 
+        duration={meal.duration} 
+       
+        affordability={meal.affordability}
+        complexity={meal.complexity}
+        image={meal.imageUrl}
+        ></MealItem>
+        </View>
+            <Button onPress={() => setHandler(meal)}>click</Button>
          
             <View>
             </View>
@@ -63,7 +78,7 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = dispatch => {
     return{
         onMealSet: (name) => dispatch({type: 'MEALSET', value: name}),
-        onFavSet: (name) => dispatch({type: 'FAVOSET', value: name})
+        onFavSet: (meal) => dispatch({type: 'FAVOSET', value: meal})
     }
 }
 

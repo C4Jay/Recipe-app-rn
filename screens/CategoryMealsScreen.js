@@ -29,7 +29,8 @@ const CategoryMeals = (props) => {
         duration={items.item.duration} 
         onSelectedMeal={() => {props.navigation.navigate({routeName: 'MealDetail', params: {
             specmealId: items.item.id,
-            itemtitle: items.item.title
+            itemtitle: items.item.title,
+            wholeitem: items.item
         }})}}
         affordability={items.item.affordability}
         complexity={items.item.complexity}
