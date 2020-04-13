@@ -20,7 +20,13 @@ const FavoritesScreen = (props) => {
                 style={styles.item}
                 title={single.title} 
                 duration={single.duration} 
-              
+                
+                onSelectedMeal={() => {props.navigation.navigate({routeName: 'MealDetail', params: {
+                    specmealId: single.id,
+                    itemtitle: single.title,
+                    wholeitem: single
+                }})}}
+
                 affordability={single.affordability}
                 complexity={single.complexity}
                 image={single.imageUrl}
