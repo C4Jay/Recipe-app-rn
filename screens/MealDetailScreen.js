@@ -18,7 +18,8 @@ const MealDetailScreen = (props) => {
     const specmeal = MEALS.find(meal => meal.id === id)
 
     const setHandler = (name) => {
-        props.onFavSet(name)
+        /* props.onFavSet(name) */
+        props.onMealSet(name)
     }
     
     return (
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = dispatch => {
     return{
-        onMealSet: () => dispatch({type: 'MEALSET', value: 'chicken-burger'}),
+        onMealSet: (name) => dispatch({type: 'MEALSET', value: name}),
         onFavSet: (name) => dispatch({type: 'FAVOSET', value: name})
     }
 }

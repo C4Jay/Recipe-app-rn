@@ -6,8 +6,9 @@ const FavoritesScreen = (props) => {
     return (
         <View style={styles.screen}>
             <Text>Favorites Screen</Text>
-            <Text>{props.favoritemeal}</Text>
-            <Text>{props.favorite}</Text>
+            <Text>{props.favoritemeal1}</Text>
+            <Text>{props.favoritemeal2}</Text>{/* 
+            <Text>{props.favorite}</Text> */}
         </View>
     )
 }
@@ -24,7 +25,8 @@ const styles = StyleSheet.create({
 const mapSToProps = (state, ownProps) => {
     return {
         favoritemeal: state.favoritelist[0],       
-        favoritemeal1: state.favoritelist[2],
+        favoritemeal1: state.favoritelist[2],      
+        favoritemeal2: state.favoritelist[3],       
         favorite: state.favorites
     }
 }
