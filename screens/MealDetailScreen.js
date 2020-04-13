@@ -3,6 +3,11 @@ import { View, Text, StyleSheet } from 'react-native';
 import { MEALS } from '../data/dummy';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import Custombutton from '../components/Helperbutton';
+
+import { connect } from 'react-redux';
+
+import { Button } from 'react-native-paper';
+
 var nameofmeal = ''
 
 const MealDetailScreen = (props) => {
@@ -11,6 +16,10 @@ const MealDetailScreen = (props) => {
     const name = props.navigation.getParam('itemtitle')
     nameofmeal = props.navigation.getParam('itemtitle')
     const specmeal = MEALS.find(meal => meal.id === id)
+
+    const setHandler = (name) => {
+        props.onFavSet(name)
+    }
     
     return (
         <View style={styles.screen}>
@@ -18,6 +27,10 @@ const MealDetailScreen = (props) => {
             <Text>{id}</Text>
             <Text>{name}</Text>
             <Text>{specmeal.title}</Text>
+            <Button onPress={() => setHandler(name)}>click</Button>
+         
+            <View>
+            </View>
         </View>
     )
 }
@@ -34,7 +47,7 @@ MealDetailScreen['navigationOptions'] = screenProps => ({
           <Item 
           title="Favorite" 
           iconName="ios-star" 
-          onPress={() => {console.log("fav mark")}}></Item>
+          onPress={() => screenProps.onFavSet}></Item>
       </HeaderButtons>)}
 })
 
@@ -46,4 +59,11 @@ const styles = StyleSheet.create({
     }
 })
 
-export default MealDetailScreen;
+const mapDispatchToProps = dispatch => {
+    return{
+        onMealSet: () => dispatch({type: 'MEALSET', value: 'chicken-burger'}),
+        onFavSet: (name) => dispatch({type: 'FAVOSET', value: name})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(MealDetailScreen);
